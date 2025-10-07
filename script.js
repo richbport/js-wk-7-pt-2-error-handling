@@ -23,8 +23,17 @@
 //   }
 // }
 
+// Log liberally
+
 fetch(url)
 .then(res => {
   console.log("Raw response:", res) // Inspect here
   return res.json();
 })
+
+// Use Debugger
+
+async function debug() {
+  debugger; // Pause here
+  const data = await fetchData();
+}
