@@ -14,11 +14,11 @@
 
 async function orderPizza() {
   try {
-    const menu = await fetchMenu();
-    const pizza = await cookPizza(menu);
-    return deliver(pizza);
+    const menu = await fetchMenu();  // Could fail
+    const pizza = await cookPizza(menu); // Could fail
+    return deliver(pizza); // Could fail
   } catch (error) {
     console.log("Pizza disaster:", error);
-    return "Free coupon";
+    return "Free coupon"; // Recovery
   }
 }
