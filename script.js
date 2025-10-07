@@ -17,5 +17,8 @@ async function orderPizza() {
     const menu = await fetchMenu();
     const pizza = await cookPizza(menu);
     return deliver(pizza);
-  } 
+  } catch (error) {
+    console.log("Pizza disaster:", error);
+    return "Free coupon";
+  }
 }
