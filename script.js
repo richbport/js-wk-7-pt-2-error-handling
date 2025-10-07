@@ -12,13 +12,19 @@
 
 //  Async Error Handling
 
-async function orderPizza() {
-  try {
-    const menu = await fetchMenu();  // Could fail
-    const pizza = await cookPizza(menu); // Could fail
-    return deliver(pizza); // Could fail
-  } catch (error) {
-    console.log("Pizza disaster:", error);
-    return "Free coupon"; // Recovery
-  }
-}
+// async function orderPizza() {
+//   try {
+//     const menu = await fetchMenu();  // Could fail
+//     const pizza = await cookPizza(menu); // Could fail
+//     return deliver(pizza); // Could fail
+//   } catch (error) {
+//     console.log("Pizza disaster:", error);
+//     return "Free coupon"; // Recovery
+//   }
+// }
+
+fetch(url)
+.then(res => {
+  console.log("Raw response:", res) // Inspect here
+  return res.json();
+})
