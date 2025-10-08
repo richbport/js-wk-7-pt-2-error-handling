@@ -61,3 +61,16 @@ fetch(url)
 .then(handleData)
 .catch(logError)
 .finally(cleanup);
+
+// BAD - "Callback hell" reborn
+getUser().then(user => {
+  getOrders(user.id).then(orders => {
+    // ...
+  })
+})
+
+// GOOD - Flat async/await
+async function loadData() {
+  const user = await getUser();
+  const orders = await getOrders(user.id);
+}
