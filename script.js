@@ -23,17 +23,41 @@
 //   }
 // }
 
-// Log liberally
+// // Log liberally
 
+// fetch(url)
+// .then(res => {
+//   console.log("Raw response:", res) // Inspect here
+//   return res.json();
+// })
+
+// // Use Debugger
+
+// async function debug() {
+//   debugger; // Pause here
+//   const data = await fetchData();
+// }
+
+// Validate Data Flow
+
+// // Check between steps
+// const user = await getUser();
+// console.log("User:", user);
+// const orders = await getOrders(user.id);
+
+// // Test Error Paths
+// getUser(-1).catch(console.error);
+
+// // Monitor Unhandled Rejections
+// window.addEventListener("unhandledrejection", event) => {
+//   alert(`UNCAUGHT ERROR: ${event.reason}`);
+// }
+
+// BAD - Errors disappear
+fetch(url).then(data => console.log(data));
+
+// GOOD - Explicit handling
 fetch(url)
-.then(res => {
-  console.log("Raw response:", res) // Inspect here
-  return res.json();
-})
-
-// Use Debugger
-
-async function debug() {
-  debugger; // Pause here
-  const data = await fetchData();
-}
+.then(handleData)
+.catch(logError)
+.finally(cleanup);
